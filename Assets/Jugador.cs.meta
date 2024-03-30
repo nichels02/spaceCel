@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 6511249208b2e13488911126ac479d38
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - LaNave: {fileID: 11400000, guid: 2638b7096dba97646b9c7b0782789384, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
