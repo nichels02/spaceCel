@@ -48,4 +48,11 @@ public class Botones : MonoBehaviour
         NaveElegida.velocidadVertical = laNave.velocidadVertical;
     }
 
+
+    public void Salir()
+    {
+        print("salir");
+        Application.Quit();
+    }
+
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+
 
 public class Jugador : MonoBehaviour
 {
@@ -19,9 +21,22 @@ public class Jugador : MonoBehaviour
     [SerializeField] float tiempoParaVolverNormal;
     Color Colorguardado;
     [SerializeField] Color ColorDeModificacion;
+    [SerializeField] TMP_Text TextoPrueba;
+
+    [SerializeField] float LimiteMin;
+    [SerializeField] float LimiteMax;
+    UnityEngine.Gyroscope ElGiroscopio;
+    Quaternion RotationBase = new Quaternion(0, 0, 1, 0);
     // Start is called before the first frame update
     void Start()
     {
+        if (SystemInfo.supportsGyroscope)
+        {
+            ElGiroscopio = Input.gyro;
+            ElGiroscopio.enabled = true;
+            //TextoPrueba.text = "si conecto";
+        }
+        
 
         MySprite = GetComponent<SpriteRenderer>();
         Colorguardado = MySprite.color;
@@ -39,6 +54,21 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TextoPrueba.text = Input.acceleration + "";
+        Vector3 Prueba = Input.acceleration;
+
+        if(Prueba.z < LimiteMin && transform.position.y < alturaMax && !Murio)
+        {
+            transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
+        }
+        else if(Prueba.z > LimiteMax && transform.position.y > alturaMin && !Murio)
+        {
+            transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
+        }
+
+
+        /*
+        //subir o bajar
         if (SubirOBajar > 0 && transform.position.y < alturaMax && !Murio)
         {
             transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
@@ -47,6 +77,9 @@ public class Jugador : MonoBehaviour
         {
             transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
         }
+        */
+
+        //tiempo sin colicion
         if (coliciono && tiempo < tiempoParaVolverNormal)
         {
             tiempo += Time.deltaTime;
