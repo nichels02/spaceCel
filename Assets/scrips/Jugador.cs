@@ -91,7 +91,7 @@ public class Jugador : MonoBehaviour
             MySprite.color = Colorguardado;
         }
     }
-
+    /*
     public void ElevarAltura(InputAction.CallbackContext value) 
     {
         SubirOBajar = value.ReadValue<float>();
@@ -99,7 +99,7 @@ public class Jugador : MonoBehaviour
         
 
     }
-
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("coliciono");
