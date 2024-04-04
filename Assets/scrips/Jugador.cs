@@ -23,8 +23,14 @@ public class Jugador : MonoBehaviour
     [SerializeField] Color ColorDeModificacion;
     [SerializeField] TMP_Text TextoPrueba;
 
+    [SerializeField] float TiempoEntreDisparo;
+    [SerializeField] float ElTiempoD=100;
+    [SerializeField] ObjectPoling ListaDeBalas;
+
+
     [SerializeField] float LimiteMin;
     [SerializeField] float LimiteMax;
+    [SerializeField] bool TecladoOCel;
     UnityEngine.Gyroscope ElGiroscopio;
     Quaternion RotationBase = new Quaternion(0, 0, 1, 0);
     // Start is called before the first frame update
@@ -54,30 +60,41 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TextoPrueba.text = Input.acceleration + "";
-        Vector3 Prueba = Input.acceleration;
+        ElTiempoD += Time.deltaTime;
+        if (TecladoOCel)
+        {
+            //Touch
+            TextoPrueba.text = Input.acceleration + "";
+            Vector3 Prueba = Input.acceleration;
+            if (Prueba.z < LimiteMin && transform.position.y < alturaMax && !Murio)
+            {
+                transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
+            }
+            else if (Prueba.z > LimiteMax && transform.position.y > alturaMin && !Murio)
+            {
+                transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
+            }
+        }
+        else
+        {
+            //Teclado
+            if (SubirOBajar > 0 && transform.position.y < alturaMax && !Murio)
+            {
+                transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
+            }
+            else if (SubirOBajar < 0 && transform.position.y > alturaMin && !Murio)
+            {
+                transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
+            }
+        }
 
-        if(Prueba.z < LimiteMin && transform.position.y < alturaMax && !Murio)
+        //disparar
+        if (Input.touchCount > 0 && ElTiempoD > TiempoEntreDisparo)
         {
-            transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
-        }
-        else if(Prueba.z > LimiteMax && transform.position.y > alturaMin && !Murio)
-        {
-            transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
-        }
+            ElTiempoD = 0;
+            ListaDeBalas.NuevoObjeto(transform.position);
 
-
-        /*
-        //subir o bajar
-        if (SubirOBajar > 0 && transform.position.y < alturaMax && !Murio)
-        {
-            transform.position += Vector3.up * velocidadVertical * Time.deltaTime;
         }
-        else if (SubirOBajar < 0 && transform.position.y > alturaMin && !Murio)
-        {
-            transform.position += Vector3.down * velocidadVertical * Time.deltaTime;
-        }
-        */
 
         //tiempo sin colicion
         if (coliciono && tiempo < tiempoParaVolverNormal)
@@ -91,7 +108,6 @@ public class Jugador : MonoBehaviour
             MySprite.color = Colorguardado;
         }
     }
-    /*
     public void ElevarAltura(InputAction.CallbackContext value) 
     {
         SubirOBajar = value.ReadValue<float>();
@@ -99,7 +115,17 @@ public class Jugador : MonoBehaviour
         
 
     }
-    */
+
+
+
+
+    public void Disparar(InputAction.CallbackContext value)
+    {
+        SubirOBajar = value.ReadValue<float>();
+
+
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("coliciono");

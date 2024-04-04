@@ -16,6 +16,7 @@ public class ControladorTiempo : MonoBehaviour
     public float TiempoParaGenerarMeteorito=100;
     public float duracionEntreMeteoritos=0;
     [SerializeField] GameObject PrefabMeteoro;
+    [SerializeField] ObjectPoling ListaDeMeteoritos;
     public bool SeMurio;
 
     private void Awake()
@@ -61,8 +62,8 @@ public class ControladorTiempo : MonoBehaviour
 
     void GenerarMeteoro()
     {
-        float posicion = UnityEngine.Random.Range(-4, 4);
-        GameObject Objeto = Instantiate(PrefabMeteoro, new Vector2(11, posicion), Quaternion.identity);
+        Vector2 LaPosicion = new Vector2(11, UnityEngine.Random.Range(-4, 4));
+        GameObject Objeto = ListaDeMeteoritos.NuevoObjeto(LaPosicion);
         float Velocidad = 1.2f + 6f * (velocidad / 15f);
         Objeto.GetComponent<Meteorito>().velocidad = Velocidad;
     }

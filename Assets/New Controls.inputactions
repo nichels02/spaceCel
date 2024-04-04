@@ -13,15 +13,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "AlturaCelular",
-                    "type": "Value",
-                    "id": "bff98ef4-f219-4a44-ad33-0cc2ca497afc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -57,17 +48,6 @@
                     "action": "altura",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "460f7db4-4a67-47ec-aacd-3a04e144991e",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AlturaCelular",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

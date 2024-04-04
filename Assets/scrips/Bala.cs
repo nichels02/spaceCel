@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteorito : ObjetosRepetibles
+public class Bala : ObjetosRepetibles
 {
-    public float velocidad;
+    [SerializeField] float Velocidad;
     
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,8 @@ public class Meteorito : ObjetosRepetibles
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * velocidad * Time.deltaTime;
-        if (transform.position.x < limite)
+        transform.position += Vector3.right * Velocidad * Time.deltaTime;
+        if (transform.position.x > limite)
         {
             Lalista.SeDesactivo();
             gameObject.SetActive(false);
