@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Unity.VisualScripting;
 
 
 public class Jugador : MonoBehaviour
@@ -131,18 +132,32 @@ public class Jugador : MonoBehaviour
         print("coliciono");
         if (collision.tag == "Metiorito" && coliciono == false)
         {
-            print("coliciono2");
-            vida -= 1;
-            coliciono = true;
-            tiempo = 0;
-            ControladorTiempo.instance.LaUi.actualizarVida(vida);
-            if (vida == 0)
-            {
-                ControladorTiempo.instance.SeMurio = true;
-                Murio = true;
-                ControladorTiempo.instance.LaUi.Moriste();
-                //Metodo del tiempo para detenerlo y aparecer el panel
-            }
+            collision.gameObject.SetActive(false);
+            MotodoDeChocarConObstaculos();
+        }
+        if (collision.tag == "NaveAlien" && coliciono == false)
+        {
+            collision.gameObject.SetActive(false);
+            MotodoDeChocarConObstaculos();
+        }
+    }
+
+
+
+    void MotodoDeChocarConObstaculos()
+    {
+        print("coliciono2");
+        
+        vida -= 1;
+        coliciono = true;
+        tiempo = 0;
+        ControladorTiempo.instance.LaUi.actualizarVida(vida);
+        if (vida == 0)
+        {
+            ControladorTiempo.instance.SeMurio = true;
+            Murio = true;
+            ControladorTiempo.instance.LaUi.Moriste();
+            //Metodo del tiempo para detenerlo y aparecer el panel
         }
     }
 

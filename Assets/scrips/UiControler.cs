@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class UiControler : MonoBehaviour
 {
-
+    [SerializeField] Puntajes LaListaDePuntajes;
+    [SerializeField] TMP_Text TextoDeQueSeGuardo;
     [SerializeField] TMP_Text DistanciaTexto;
     [SerializeField] TMP_Text PuntajeFinal;
     [SerializeField] TMP_Text Vida;
@@ -21,6 +22,16 @@ public class UiControler : MonoBehaviour
 
     public void Moriste()
     {
+        bool SeGuardo=LaListaDePuntajes.ActualizarLista((int)ControladorTiempo.instance.distancia);
+        if (SeGuardo)
+        {
+            TextoDeQueSeGuardo.gameObject.SetActive(true);
+            TextoDeQueSeGuardo.text = "Lograste superar la posicion " + LaListaDePuntajes.posicionDelDatoNuevo + " del puntaje mas alto";
+        }
+        else
+        {
+            TextoDeQueSeGuardo.gameObject.SetActive(false);
+        }
         Panel.SetActive(true);
         DistanciaTexto.gameObject.SetActive(false);
         Vida.gameObject.SetActive(false);

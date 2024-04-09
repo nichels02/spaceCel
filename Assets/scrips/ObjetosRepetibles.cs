@@ -6,4 +6,6 @@ public class ObjetosRepetibles : MonoBehaviour
 {
     public ObjectPoling Lalista;
     [SerializeField] protected int limite;
+
+    
 }

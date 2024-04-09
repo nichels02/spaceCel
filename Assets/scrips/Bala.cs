@@ -22,4 +22,14 @@ public class Bala : ObjetosRepetibles
             gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Metiorito")
+        {
+            collision.gameObject.SetActive(false);
+            Lalista.SeDesactivo();
+            gameObject.SetActive(false);
+        }
+    }
 }
