@@ -23,7 +23,7 @@ public class Botones : MonoBehaviour
     }
     public void Jugar()
     {
-        SceneManager.LoadScene(0);
+        ControladorDeEscenas.instance.CambiarDeMapa(2);
     }
 
     public void ElegirPersonaje()

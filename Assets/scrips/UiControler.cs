@@ -45,7 +45,8 @@ public class UiControler : MonoBehaviour
 
     public void RegresarMenu()
     {
-        SceneManager.LoadScene(1);
+        ControladorDeEscenas.instance.CambiarDeMapa(1);
+        
     }
 
     public void Salir()
