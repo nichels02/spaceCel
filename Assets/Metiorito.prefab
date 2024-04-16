@@ -144,5 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lalista: {fileID: 0}
-  limite: -10
+  limite: -15
   velocidad: 0

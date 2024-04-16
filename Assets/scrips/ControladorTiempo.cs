@@ -77,7 +77,7 @@ public class ControladorTiempo : MonoBehaviour
 
     void GenerarMeteoro()
     {
-        Vector2 LaPosicion = new Vector2(11, UnityEngine.Random.Range(-4, 4));
+        Vector2 LaPosicion = new Vector2(17, UnityEngine.Random.Range(-4, 4));
         GameObject Objeto = ListaDeMeteoritos.NuevoObjeto(LaPosicion);
 
         if (Objeto == null)
@@ -90,7 +90,7 @@ public class ControladorTiempo : MonoBehaviour
 
     void GenerarAlien()
     {
-        Vector2 LaPosicion = new Vector2(11, UnityEngine.Random.Range(-4, 4));
+        Vector2 LaPosicion = new Vector2(17, UnityEngine.Random.Range(-4, 4));
         GameObject Objeto = ListaDeAliens.NuevoObjeto(LaPosicion);
 
         if (Objeto == null)
