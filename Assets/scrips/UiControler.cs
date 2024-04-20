@@ -13,6 +13,7 @@ public class UiControler : MonoBehaviour
     [SerializeField] TMP_Text PuntajeFinal;
     [SerializeField] TMP_Text Vida;
     [SerializeField] GameObject Panel;
+    [SerializeField] ObjectPoling[] ELObjectPolling;
 
 
     public void ActualizarPuntaje()
@@ -46,7 +47,10 @@ public class UiControler : MonoBehaviour
     public void RegresarMenu()
     {
         ControladorDeEscenas.instance.CambiarDeMapa(1);
-        
+        for(int i= 0;i<ELObjectPolling.Length;i++)
+        {
+            ELObjectPolling[i].desactivartodo();
+        }
     }
 
     public void Salir()

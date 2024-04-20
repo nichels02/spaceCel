@@ -56,4 +56,12 @@ public class ObjectPoling : MonoBehaviour
     {
         CantidadApagados++;
     }
+
+    public void desactivartodo()
+    {
+        for (int i = 0; i < ListaDeObjetos.Count; i++)
+        {
+            Destroy(ListaDeObjetos[i]);
+        }
+    }
 }

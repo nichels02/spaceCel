@@ -2588,6 +2588,10 @@ MonoBehaviour:
   PuntajeFinal: {fileID: 986048291}
   Vida: {fileID: 1439564089}
   Panel: {fileID: 1205301631}
+  ELObjectPolling:
+  - {fileID: 2097833568}
+  - {fileID: 2116095342}
+  - {fileID: 937672329}
 --- !u!114 &2097833568
 MonoBehaviour:
   m_ObjectHideFlags: 0
