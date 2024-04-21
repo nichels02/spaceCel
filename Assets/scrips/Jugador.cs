@@ -90,10 +90,11 @@ public class Jugador : MonoBehaviour
         }
 
         //disparar
-        if (Input.touchCount > 0 && ElTiempoD > TiempoEntreDisparo)
+        if (Input.touchCount > 0 && ElTiempoD > TiempoEntreDisparo && vida>0)
         {
             ElTiempoD = 0;
             ListaDeBalas.NuevoObjeto(transform.position);
+            SoundController.instance.CambiarMusica(2);
 
         }
 
@@ -129,6 +130,7 @@ public class Jugador : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         print("coliciono");
         if (collision.tag == "Metiorito" && coliciono == false)
         {
@@ -146,13 +148,14 @@ public class Jugador : MonoBehaviour
 
     void MotodoDeChocarConObstaculos()
     {
+        SoundController.instance.CambiarMusica(1);
         print("coliciono2");
         
         vida -= 1;
         coliciono = true;
         tiempo = 0;
         ControladorTiempo.instance.LaUi.actualizarVida(vida);
-        if (vida == 0)
+        if (vida <= 0)
         {
             ControladorTiempo.instance.SeMurio = true;
             Murio = true;

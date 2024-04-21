@@ -30,6 +30,7 @@ public class Bala : ObjetosRepetibles
             collision.gameObject.SetActive(false);
             Lalista.SeDesactivo();
             gameObject.SetActive(false);
+            SoundController.instance.CambiarMusica(3);
         }
     }
 }
