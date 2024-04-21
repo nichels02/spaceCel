@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: ListaDePuntajes
   m_EditorClassIdentifier: 
   Lalista:
-  - 619
-  - 484
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
-  - 100
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   posicionDelDatoNuevo: 1
