@@ -28,9 +28,11 @@ public class UiControler : MonoBehaviour
         {
             TextoDeQueSeGuardo.gameObject.SetActive(true);
             TextoDeQueSeGuardo.text = "Lograste superar la posicion " + LaListaDePuntajes.posicionDelDatoNuevo + " del puntaje mas alto";
+            NotificationSimple.instance.SendNotification("Limite superado", "Lograste superar la posicion " + LaListaDePuntajes.posicionDelDatoNuevo + " del puntaje mas alto" + " con " + (int)ControladorTiempo.instance.distancia + " puntos", 0, SeGuardo);
         }
         else
         {
+            NotificationSimple.instance.SendNotification("No se logro", "Perdiste al consueguir unos " + (int)ControladorTiempo.instance.distancia + " puntos", 0, SeGuardo);
             TextoDeQueSeGuardo.gameObject.SetActive(false);
         }
         Panel.SetActive(true);

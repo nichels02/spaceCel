@@ -773,7 +773,7 @@ MonoBehaviour:
   ListaDeBalas: {fileID: 937672329}
   LimiteMin: -0.6
   LimiteMax: -0.4
-  TecladoOCel: 0
+  TecladoOCel: 1
 --- !u!61 &937672323
 BoxCollider2D:
   m_ObjectHideFlags: 0

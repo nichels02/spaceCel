@@ -157,10 +157,11 @@ public class Jugador : MonoBehaviour
         ControladorTiempo.instance.LaUi.actualizarVida(vida);
         if (vida <= 0)
         {
+
             ControladorTiempo.instance.SeMurio = true;
             Murio = true;
             ControladorTiempo.instance.LaUi.Moriste();
-            //Metodo del tiempo para detenerlo y aparecer el panel
+            Destroy(this);
         }
     }
 
